@@ -1,0 +1,13 @@
+{
+    "name": "i4j5/slim-crm",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksandr Sazhin",
+            "email": "i4j5@ya.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
