@@ -8,6 +8,13 @@
             "email": "i4j5@ya.ru"
         }
     ],
+    "autoload": {
+        "psr-0": {"": "classes/"}
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "slim/slim": "3.x-dev",
+        "j4mie/paris": "dev-master",
+        "slim/twig-view": "dev-master"
+    }
 }

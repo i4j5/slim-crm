@@ -1,0 +1,13 @@
+{
+  "name": "slim-crm",
+  "version": "0.0.0",
+  "homepage": "https://github.com/i4j5/slim-crm",
+  "authors": [
+    "Aleksandr Sazhin <i4j5@ya.ru>"
+  ],
+  "main": "public/index.php",
+  "license": "MIT",
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  }
+}

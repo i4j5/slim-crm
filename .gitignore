@@ -1,0 +1,7 @@
+/vendor
+/node_modules
+/bower_components
+/public/libs
+/resources/cache
+composer.lock
+npm-debug.log
