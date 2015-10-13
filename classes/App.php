@@ -8,7 +8,15 @@ class App {
 
         if (self::$slim === null) {
 
-            $app = new Slim\App();
+            $configuration = [
+                'settings' => [
+                    'displayErrorDetails' => true,
+                ],
+            ];
+
+            $c = new \Slim\Container($configuration);
+            
+            $app = new \Slim\App($c);
 
             $container = $app->getContainer();
 
@@ -16,7 +24,7 @@ class App {
                 $view = new \Slim\Views\Twig(
                     DOCROOT . 'resources/views', 
                     [
-                        'cache' => DOCROOT . 'resources/cache'
+                        //'cache' => DOCROOT . 'resources/cache'
                     ]
                 );
 

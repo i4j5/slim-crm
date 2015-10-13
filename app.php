@@ -7,6 +7,7 @@ $app = App::instance();
 
 ORM::configure('sqlite:' . DOCROOT . 'database/crm.db');
 
-$app->get('/', 'Http\Controllers\Main:index');
+$app->get('/', 'Http\Controllers\Orders:index');
+$app->get('/login', 'Http\Controllers\Auth:login');
 
 return $app;

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %} 
+ 
+<table class="responsive-table centered">
+  <thead>
+    <tr>
+        <th>#</th>
+        <th >Имя</th>
+        <th>Телефон</th>
+        <th>E-mail</th>
+        <th>Заказ</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.name }}</td>
+        <td>{{ order.phone }}</td>
+        <td>{{ order.email }}</td>
+        <td>{{ order.title }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.status }}</td>
+        <td>
+        	<a class="btn-floating red"><i class="material-icons">clear</i></a>
+  	      <a class="btn-floating lue-grey"><i class="material-icons">create</i></a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="center">	
+	<ul class="pagination">
+	  <li class="waves-effect active"><a href="#!">1</a></li>
+	  <li class="waves-effect"><a href="#!">2</a></li>
+	  <li class="waves-effect"><a href="#!">3</a></li>
+	  <li class="waves-effect"><a href="#!">4</a></li>
+	  <li class="waves-effect"><a href="#!">5</a></li>
+	</ul>
+</div>	
+
+{% endblock %}

@@ -8,6 +8,7 @@
   "main": "public/index.php",
   "license": "MIT",
   "devDependencies": {
+    "Materialize": "materialize#~0.97.1",
     "jquery": "~2.1.4"
   }
 }
