@@ -25,10 +25,10 @@
         <td>{{ order.email }}</td>
         <td>{{ order.title }}</td>
         <td>{{ order.date }}</td>
-        <td>{{ order.status_id }}</td>
+        <td>{{ order.status }}</td>
         <td>
-        	<a href="/delete/{{ order.id }}" class="btn-floating red"><i class="material-icons">clear</i></a>
-  	      <a href="/edit/{{ order.id }}" class="btn-floating lue-grey"><i class="material-icons">create</i></a>
+        	<a class="btn-floating red"><i class="material-icons">clear</i></a>
+  	      <a class="btn-floating lue-grey"><i class="material-icons">create</i></a>
         </td>
       </tr>
     {% endfor %}
@@ -43,17 +43,6 @@
 	  <li class="waves-effect"><a href="#!">4</a></li>
 	  <li class="waves-effect"><a href="#!">5</a></li>
 	</ul>
-</div>
-
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue">
-    <i class="material-icons">more_vert</i>
-  </a>
-  <ul>
-    <li>
-      <a href="/create" class="btn-floating green"><i class="material-icons">add</i></a>
-    </li>
-  </ul>
 </div>	
 
 {% endblock %}

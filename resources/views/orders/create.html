@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %} 
+ 
+<form class="col s12" method="post">
+
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="title" name="title" type="text">
+      <label for="title">Заголовок</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="name" name="name" type="text">
+      <label for="name">Имя</label>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="phone" name="phone" type="tel">
+      <label for="phone">Телефон</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="email" name="email" type="tel">
+      <label for="email">E-mail</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <select id="status_id" name="status_id">
+        <option value="0">Новый</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label for="status_id">Статус</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <button type="submit" class="waves-effect waves-light btn">Добавить</button> 
+    </div>
+  </div>
+
+</form>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
+{% endblock %}
