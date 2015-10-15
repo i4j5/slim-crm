@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}{% endblock %}</title>
-	<link rel="stylesheet" href="/libs/Materialize/dist/css/materialize.min.css">
+  <link rel="stylesheet" href="/libs/Materialize/dist/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script src="/libs/jquery/dist/jquery.min.js"></script>
-	<script src="/libs/Materialize/dist/js/materialize.min.js"></script>
+  <script src="/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/libs/Materialize/dist/js/materialize.min.js"></script>
+  <script src="/libs/moment/min/moment-with-locales.min.js"></script>
 </head>
 <body>
-	<div class="__container">
-		{% block content %}{% endblock %}
-	</div>
+  <div class="__container">
+    {% block content %}{% endblock %}
+  </div>
+  {% block nav %}
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large blue">
+        <i class="material-icons">more_vert</i>
+      </a>
+      <ul>
+        <li>
+          <a href="/create" class="btn-floating green"><i class="material-icons">add</i></a>
+        </li>
+        <li>
+          <a href="/" class="btn-floating lime"><i class="material-icons">shopping_cart</i></a>
+        </li>
+      </ul>
+    </div>  
+  {% endblock %}
+
+  <script>
+    $(document).ready(function() {
+
+      $('select').material_select();
+
+      moment.lang('ru');
+
+      function smartDate () {
+        $('.js-moment').each(function(index, el) {
+          $el = $(el);
+
+          var time = $el.data('time');
+
+          if ( moment().format('l') ===  moment.unix(time).format('l') ) {
+            $el.text( moment.unix(time).fromNow() );
+
+          } else if ( moment().format('YYYY') === moment.unix(time).format('YYYY') ) {
+            $el.text( moment.unix(time).format('D MMMM в h:mm') );
+
+          } else {
+            $el.text( moment.unix(time).format('D MMMM YYYY') );
+          }
+        });
+      }
+
+      smartDate();
+      setInterval(smartDate, 30000);
+
+    })
+  </script>
 </body>
 </html>

@@ -2,10 +2,9 @@
 
 {% block content %} 
  
-<table class="responsive-table centered">
+<table class="responsive-table highlight centered">
   <thead>
     <tr>
-        <th>#</th>
         <th >Имя</th>
         <th>Телефон</th>
         <th>E-mail</th>
@@ -19,12 +18,11 @@
   <tbody>
     {% for order in orders %}
       <tr>
-        <td>{{ order.id }}</td>
         <td>{{ order.name }}</td>
         <td>{{ order.phone }}</td>
         <td>{{ order.email }}</td>
         <td>{{ order.title }}</td>
-        <td>{{ order.date }}</td>
+        <td><span class="js-moment" data-time="{{ order.date }}"></span></td>
         <td>{{ order.status_id }}</td>
         <td>
         	<a href="/delete/{{ order.id }}" class="btn-floating red"><i class="material-icons">clear</i></a>
@@ -44,16 +42,5 @@
 	  <li class="waves-effect"><a href="#!">5</a></li>
 	</ul>
 </div>
-
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue">
-    <i class="material-icons">more_vert</i>
-  </a>
-  <ul>
-    <li>
-      <a href="/create" class="btn-floating green"><i class="material-icons">add</i></a>
-    </li>
-  </ul>
-</div>	
 
 {% endblock %}

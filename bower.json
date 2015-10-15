@@ -10,5 +10,8 @@
   "devDependencies": {
     "Materialize": "materialize#~0.97.1",
     "jquery": "~2.1.4"
+  },
+  "dependencies": {
+    "moment": "~2.10.6"
   }
 }

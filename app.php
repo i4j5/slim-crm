@@ -3,6 +3,8 @@
 $loader = require_once  DOCROOT . 'vendor/autoload.php';
 $loader->add('', DOCROOT . 'classes/');
 
+setlocale(LC_TIME, 'Russian'); 
+
 $app = App::instance();
 
 ORM::configure('sqlite:' . DOCROOT . 'database/crm.db');

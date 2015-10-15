@@ -3,12 +3,13 @@
 namespace Http\Controllers;
 
 use \Model;
+use Carbon\Carbon;
 
 class Orders extends \AbstractController{
 
     public function index($request, $response, $args) {
 
-    	$orders = Model::factory('Models\Order')->find_many();
+    	$orders = Model::factory('Models\Order')->order_by_desc('id')->find_many();
 
       $data = [];
       foreach ($orders as $order) {
@@ -34,7 +35,11 @@ class Orders extends \AbstractController{
         ], ''
       );
 
-      $data['date'] = date("l dS of F Y h:i:s A");
+      $dt = Carbon::now();
+
+      //$dt->subDays(2);
+
+      $data['date'] = $dt->timestamp;
 
       if ($request->isPost()) {
 
