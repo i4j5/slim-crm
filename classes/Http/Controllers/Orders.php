@@ -82,6 +82,13 @@ class Orders extends \AbstractController{
         ], ''
       );
 
+      $all_status = Model::factory('Models\Status')->order_by_desc('id')->find_many();
+
+      $status = [];
+      foreach ($all_status as $one_status) {
+          $status[] = $one_status->as_array();
+      }
+
       $dt = Carbon::now();
 
       //$dt->subDays(400);
@@ -99,7 +106,10 @@ class Orders extends \AbstractController{
       }
 
       return $this->view->render($response, 'orders/create.html', 
-	    	['data' => $data]
+	    	[
+          'data' => $data,
+          'status' => $status
+        ]
 	    );
 	    
     }
@@ -111,6 +121,19 @@ class Orders extends \AbstractController{
     	$order = Model::factory('Models\Order')->find_one($id);
 
     	$data = $order->as_array();
+
+      $all_status = Model::factory('Models\Status')->order_by_desc('id')->find_many();
+
+      $status = [];
+
+      $status[] = [
+        'id' => '0',
+        'title' => 'Новый'
+      ];
+
+      foreach ($all_status as $one_status) {
+          $status[] = $one_status->as_array();
+      }
 
       if ($request->isPost()) {
 
@@ -129,10 +152,15 @@ class Orders extends \AbstractController{
 
 				$order->save();
 
+        $data['id'] = $id;
+
       }
 
       return $this->view->render($response, 'orders/edit.html', 
-	    	['data' => $data]
+	    	[
+          'data' => $data,
+          'status' => $status
+        ]
 	    );
 	    
     }

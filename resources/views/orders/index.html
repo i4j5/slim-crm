@@ -35,9 +35,12 @@
 
 <div class="center">	
 	<ul class="pagination">
-		{% for page in pages %}
-	  	<li class="waves-effect {{ page.class }}"><a href="/?page={{ page.item }}">{{ page.item }}</a></li>
-	  {% endfor %}
+    {% if pages|length <= 1 %}
+    {% else %}
+  		{% for page in pages %}
+  	  	<li class="waves-effect {{ page.class }}"><a href="/?page={{ page.item }}">{{ page.item }}</a></li>
+  	  {% endfor %}
+    {% endif %}
 	</ul>
 </div>
 
