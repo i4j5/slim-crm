@@ -23,7 +23,7 @@
         <td>{{ order.email }}</td>
         <td>{{ order.title }}</td>
         <td><span class="js-moment" data-time="{{ order.date }}"></span></td>
-        <td>{{ order.status_id }}</td>
+        <td>{{ order.status }}</td>
         <td>
         	<a href="/delete/{{ order.id }}" class="btn-floating red"><i class="material-icons">clear</i></a>
   	      <a href="/edit/{{ order.id }}" class="btn-floating lue-grey"><i class="material-icons">create</i></a>
@@ -35,11 +35,9 @@
 
 <div class="center">	
 	<ul class="pagination">
-	  <li class="waves-effect active"><a href="#!">1</a></li>
-	  <li class="waves-effect"><a href="#!">2</a></li>
-	  <li class="waves-effect"><a href="#!">3</a></li>
-	  <li class="waves-effect"><a href="#!">4</a></li>
-	  <li class="waves-effect"><a href="#!">5</a></li>
+		{% for page in pages %}
+	  	<li class="waves-effect {{ page.class }}"><a href="/?page={{ page.item }}">{{ page.item }}</a></li>
+	  {% endfor %}
 	</ul>
 </div>
 

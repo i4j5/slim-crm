@@ -2,14 +2,10 @@
 
 namespace Models;
 
-class Order extends \Model{
+class Status extends \Model{
 
-  public static $_table = 'orders';
+  public static $_table = 'status';
   public static $_id_column = 'id';
-
-  public function status() {
-    return $this->has_one('Status');
-  }
 
   public function values(array $values)
 	{
