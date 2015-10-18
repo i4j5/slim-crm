@@ -15,11 +15,16 @@
     {% block content %}{% endblock %}
   </div>
   {% block nav %}
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large blue">
+    <ul id="slide-out" class="side-nav">
+      <li><a href="/">Заказы</a></li>
+      <li><a href="/settings/status">Статусы</a></li>
+      <li><a href="/create" >Добавить заказ</a></li>
+    </ul>
+    <div data-activates="slide-out" class="button-collapse fixed-action-btn">
+      <a class="btn-floating blue">
         <i class="material-icons">more_vert</i>
       </a>
-      <ul>
+<!--       <ul>
         <li>
           <a href="/create" class="btn-floating green"><i class="material-icons">add</i></a>
         </li>
@@ -29,12 +34,17 @@
         <li>
           <a href="/settings/status" class="btn-floating lime"><i class="material-icons"></i></a>
         </li>
-      </ul>
+      </ul> -->
     </div>  
   {% endblock %}
-
+ 
   <script>
     $(document).ready(function() {
+
+      $(".button-collapse").sideNav({
+        menuWidth: 200,
+        edge: 'right'
+      });
 
       $('select').material_select();
 
