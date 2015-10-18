@@ -6,6 +6,7 @@
   <thead>
     <tr>
         <th >Статус</th>
+        <th >Описание</th>
         <th>Действия</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     {% for item in data %}
       <tr>
         <td>{{ item.title }}</td>
+        <td>{{ item.description }}</td>
         <td>
         	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red"><i class="material-icons">clear</i></a>
   	      <a href="/settings/status/edit/{{ item.id }}" class="btn-floating lue-grey"><i class="material-icons">create</i></a>

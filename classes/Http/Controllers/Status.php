@@ -32,7 +32,8 @@ class Status extends \AbstractController{
       $data = \Ohanzee\Helper\Arr::extract(
         $request->getParsedBody(),
         [
-          'title'
+          'title',
+          'description'
         ], ''
       );
 
@@ -67,7 +68,8 @@ class Status extends \AbstractController{
 	      $data = \Ohanzee\Helper\Arr::extract(
 	        $request->getParsedBody(),
 	        [
-	          'title'
+	          'title',
+            'description'
 	        ], ''
 	      );
 
