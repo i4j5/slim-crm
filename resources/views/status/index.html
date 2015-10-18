@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %} 
+ 
+<table class="responsive-table highlight centered">
+  <thead>
+    <tr>
+        <th >Статус</th>
+        <th>Действия</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for item in data %}
+      <tr>
+        <td>{{ item.title }}</td>
+        <td>
+        	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red"><i class="material-icons">clear</i></a>
+  	      <a href="/settings/status/edit/{{ item.id }}" class="btn-floating lue-grey"><i class="material-icons">create</i></a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="center">
+  <br>
+  <a href="/settings/status/create" class="waves-effect waves-light btn">Добавить</a>
+</div>
+
+{% endblock %}
