@@ -21,4 +21,6 @@ $app->map(['GET', 'POST'], '/settings/status/create', 'Http\Controllers\Status:c
 $app->map(['GET', 'POST'], '/settings/status/edit/{id}', 'Http\Controllers\Status:edit');
 $app->get('/settings/status/delete/{id}', 'Http\Controllers\Status:delete');
 
+$app->map(['GET', 'POST'], '/settings', 'Http\Controllers\Settings:index');
+
 return $app;
