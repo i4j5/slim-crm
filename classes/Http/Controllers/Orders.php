@@ -10,7 +10,8 @@ class Orders extends \AbstractController{
     public function index($request, $response, $args) {
 
       $count_orders = sizeof(Model::factory('Models\Order')->find_many());
-      $limit = 10;
+      $limit = Model::factory('Models\Settings')->where('key', 'pagination')->find_one();
+      $limit = (int) $limit->value;
 
       $page = 1;
       if (isset($_GET['page'])) {
