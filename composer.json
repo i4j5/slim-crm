@@ -23,6 +23,8 @@
         "j4mie/paris": "dev-master",
         "slim/twig-view": "dev-master",
         "ohanzee/helpers": "dev-master",
-        "nesbot/carbon": "~1.14"
+        "nesbot/carbon": "~1.14",
+        "slim/flash": "~0.1.0"
+
     }
 }

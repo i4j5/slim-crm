@@ -36,6 +36,11 @@ class App {
                 return $view;
             };
 
+            $container['flash'] = function () {
+                return new \Slim\Flash\Messages();
+            };
+
+
             self::$slim = $app;
 
         }

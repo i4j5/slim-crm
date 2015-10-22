@@ -8,6 +8,9 @@ abstract class AbstractController {
     	self::$app = App::instance();
 
     	$this->view = self::$app->view;
+
+    	$this->flash = self::$app->flash;
     }
 
 }
+

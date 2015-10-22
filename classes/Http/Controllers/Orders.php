@@ -13,9 +13,18 @@ class Orders extends \AbstractController{
       $limit = Model::factory('Models\Settings')->where('key', 'pagination')->find_one();
       $limit = (int) $limit->value;
 
-      $page = 1;
+      $messages = $this->flash->getMessages();
+
       if (isset($_GET['page'])) {
-         $page = $_GET['page'];
+         $page = (int) $_GET['page'];
+      } else if (isset($messages['page'])) {
+        $page = (int) $messages['page'][0];
+      } else {
+        $page = 1;
+      }
+
+      if ($page == 0) {
+        $page = 1;
       }
 
       $offset = ($page - 1) * $limit;
@@ -64,12 +73,13 @@ class Orders extends \AbstractController{
         return $response->withRedirect('/?page=' . count($pages));
       }
 
+      $this->flash->addMessage('page', $page);
+
       return $this->view->render($response, 'orders/index.html', 
 	    	[
 	    		'orders' => $data,
 	    		'status' => $status,
-          'pages' => $pages,
-          'page' => $page
+          'pages' => $pages
 	    	]
 	    );
 
@@ -123,6 +133,9 @@ class Orders extends \AbstractController{
     public function edit($request, $response, $args) {
 
     	$id = (int) $args['id'];
+
+      $messages = $this->flash->getMessages();
+      $this->flash->addMessage('page', $messages['page'][0]);
 
     	$order = Model::factory('Models\Order')->find_one($id);
 
@@ -179,9 +192,11 @@ class Orders extends \AbstractController{
 
     	$order->delete();
 
+      $messages = $this->flash->getMessages();
+
       $page = 1;
-      if (isset($_GET['page'])) {
-         $page = $_GET['page'];
+      if (isset($messages['page'])) {
+         $page = $messages['page'][0];
       }
 
     	return $response->withRedirect('/?page=' . $page);

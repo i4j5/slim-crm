@@ -17,8 +17,9 @@
         <td>{{ item.title }}</td>
         <td>{{ item.description }}</td>
         <td>
-        	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red"><i class="material-icons">clear</i></a>
-  	      <a href="/settings/status/edit/{{ item.id }}" class="btn-floating lue-grey"><i class="material-icons">create</i></a>
+        	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red waves-effect"><i class="material-icons">clear</i></a>
+          &nbsp;
+  	      <a href="/settings/status/edit/{{ item.id }}" class="btn-floating lue-grey waves-effect"><i class="material-icons">create</i></a>
         </td>
       </tr>
     {% endfor %}

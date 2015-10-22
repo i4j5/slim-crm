@@ -3,7 +3,9 @@
 $loader = require_once  DOCROOT . 'vendor/autoload.php';
 $loader->add('', DOCROOT . 'classes/');
 
-setlocale(LC_TIME, 'Russian'); 
+setlocale(LC_TIME, 'Russian');
+
+session_start(); 
 
 $app = App::instance();
 
