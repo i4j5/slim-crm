@@ -21,8 +21,22 @@
 
       <div class="row">
         <div class="input-field col s12">
+          <input id="newPassword" name="newPassword" type="text" value="{{ data.newPassword }}">
+          <label for="newPassword">Новый пароль</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="newPasswordConfirm" name="newPasswordConfirm" type="text" value="{{ data.newPasswordConfirm }}">
+          <label for="newPasswordConfirm">Новый пароль ещё раз</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
           <input id="password" name="password" type="text" value="{{ data.password }}">
-          <label for="password">Новый пароль</label>
+          <label for="password">Текущий пароль</label>
         </div>
       </div>
 

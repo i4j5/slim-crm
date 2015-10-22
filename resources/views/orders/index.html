@@ -2,7 +2,7 @@
 
 {% block content %} 
  
-<table class="responsive-table highlight centered">
+<table class="responsive-table bordered centered">
   <thead>
     <tr>
         <th >Имя</th>
@@ -18,12 +18,42 @@
   <tbody>
     {% for order in orders %}
       <tr>
-        <td>{{ order.name }}</td>
-        <td>{{ order.phone }}</td>
-        <td>{{ order.email }}</td>
-        <td>{{ order.title }}</td>
+        <td>
+          {% if order.name %}
+            {{ order.name }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if order.phone %}
+            {{ order.phone }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if order.email %}
+            {{ order.email }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if order.title %}
+            {{ order.title }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
         <td><span class="js-moment" data-time="{{ order.date }}"></span></td>
-        <td>{{ order.status }}</td>
+        <td>
+          {% if order.status %}
+            {{ order.status }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
         <td>
         	<a href="/delete/{{ order.id }}" class="btn-floating red waves-effect"><i class="material-icons">clear</i></a>
           &nbsp;

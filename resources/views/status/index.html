@@ -2,7 +2,7 @@
 
 {% block content %} 
  
-<table class="responsive-table highlight centered">
+<table class="responsive-table bordered centered">
   <thead>
     <tr>
         <th >Статус</th>
@@ -14,8 +14,20 @@
   <tbody>
     {% for item in data %}
       <tr>
-        <td>{{ item.title }}</td>
-        <td>{{ item.description }}</td>
+        <td>
+          {% if item.title %}
+            {{ item.title }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if item.description %}
+            {{ item.description }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
         <td>
         	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red waves-effect"><i class="material-icons">clear</i></a>
           &nbsp;
