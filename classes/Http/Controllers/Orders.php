@@ -60,11 +60,16 @@ class Orders extends \AbstractController{
         }
       }
 
+      if (count($pages) < $page) {
+        return $response->withRedirect('/?page=' . count($pages));
+      }
+
       return $this->view->render($response, 'orders/index.html', 
 	    	[
 	    		'orders' => $data,
 	    		'status' => $status,
-          'pages' => $pages
+          'pages' => $pages,
+          'page' => $page
 	    	]
 	    );
 
@@ -174,7 +179,12 @@ class Orders extends \AbstractController{
 
     	$order->delete();
 
-    	return $response->withRedirect('/');
+      $page = 1;
+      if (isset($_GET['page'])) {
+         $page = $_GET['page'];
+      }
+
+    	return $response->withRedirect('/?page=' . $page);
 	    
     }
     
