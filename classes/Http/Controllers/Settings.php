@@ -33,7 +33,7 @@ class Settings extends \AbstractController{
 
           if ($data['password'] === $data['passwordConfirm']) {
 
-            $hash = password_hash($data['password'],  CRYPT_BLOWFISH,  ['cost' => 11]);
+            $hash = password_hash($data['password'],  CRYPT_BLOWFISH);
 
             $password_hash = Model::factory('Models\Settings')
                               ->where('key', 'password_hash')
@@ -48,8 +48,6 @@ class Settings extends \AbstractController{
           }
 
         }
-
-
 
         $pagination = Model::factory('Models\Settings')->where('key', 'pagination')->find_one();
         $pagination->value = $data['pagination'];

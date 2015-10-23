@@ -29,27 +29,27 @@ class Orders extends \AbstractController{
 
       $offset = ($page - 1) * $limit;
 
-    	$orders = Model::factory('Models\Order')
+      $orders = Model::factory('Models\Order')
         ->offset($offset)
         ->limit($limit)
         ->order_by_desc('id')
         ->find_many();
 
-  	 	$all_status = Model::factory('Models\Status')->order_by_desc('id')->find_many();
+      $all_status = Model::factory('Models\Status')->order_by_desc('id')->find_many();
 
-  	 	$status = [];
-  	 	$status[] = 'Новый';
-  	 	foreach ($all_status as $one_status) {
+      $status = [];
+      $status[] = 'Новый';
+      foreach ($all_status as $one_status) {
           $status[$one_status->id] = $one_status->title;
       }
 
       $data = [];
       foreach ($orders as $order) {
-      		if ( isset($status[$order->status_id]) ) {
-      			$order->status = $status[$order->status_id];
-      		} else {
-      			$order->status = '-';
-      		}
+          if ( isset($status[$order->status_id]) ) {
+            $order->status = $status[$order->status_id];
+          } else {
+            $order->status = '-';
+          }
 
           $data[] = $order->as_array();
       }
@@ -69,7 +69,7 @@ class Orders extends \AbstractController{
         }
       }
 
-      if (count($pages) < $page) {
+      if ( (count($pages) < $page) && (count($pages) != 0)) {
         return $response->withRedirect('/?page=' . count($pages));
       }
 

@@ -40,7 +40,6 @@ class App {
                 return new \Slim\Flash\Messages();
             };
 
-
             self::$slim = $app;
 
         }

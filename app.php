@@ -5,24 +5,29 @@ $loader->add('', DOCROOT . 'classes/');
 
 setlocale(LC_TIME, 'Russian');
 
-session_start(); 
-
-$app = App::instance();
+session_start();
 
 ORM::configure('sqlite:' . DOCROOT . 'database/crm.db');
 
-$app->get('/', 'Http\Controllers\Orders:index');
-$app->map(['GET', 'POST'], '/create', 'Http\Controllers\Orders:create');
-$app->map(['GET', 'POST'], '/edit/{id}', 'Http\Controllers\Orders:edit');
-$app->get('/delete/{id}', 'Http\Controllers\Orders:delete');
+$app = App::instance();
 
-$app->get('/login', 'Http\Controllers\Auth:login');
+$app->map(['GET', 'POST'], '/login', 'Http\Controllers\Auth:login');
+$app->get('/logout', 'Http\Controllers\Auth:logout');
 
-$app->get('/settings/status', 'Http\Controllers\Status:index');
-$app->map(['GET', 'POST'], '/settings/status/create', 'Http\Controllers\Status:create');
-$app->map(['GET', 'POST'], '/settings/status/edit/{id}', 'Http\Controllers\Status:edit');
-$app->get('/settings/status/delete/{id}', 'Http\Controllers\Status:delete');
+$app->group('/', function () {
 
-$app->map(['GET', 'POST'], '/settings', 'Http\Controllers\Settings:index');
+	$this->get('', 'Http\Controllers\Orders:index');
+	$this->map(['GET', 'POST'], 'create', 'Http\Controllers\Orders:create');
+	$this->map(['GET', 'POST'], 'edit/{id}', 'Http\Controllers\Orders:edit');
+	$this->get('delete/{id}', 'Http\Controllers\Orders:delete');
+
+	$this->get('settings/status', 'Http\Controllers\Status:index');
+	$this->map(['GET', 'POST'], 'settings/status/create', 'Http\Controllers\Status:create');
+	$this->map(['GET', 'POST'], 'settings/status/edit/{id}', 'Http\Controllers\Status:edit');
+	$this->get('settings/status/delete/{id}', 'Http\Controllers\Status:delete');
+
+	$this->map(['GET', 'POST'], 'settings', 'Http\Controllers\Settings:index');
+
+})->add( new Http\Middleware\Auth() );
 
 return $app;

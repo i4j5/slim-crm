@@ -2,14 +2,13 @@
 
 abstract class AbstractController {
 
-		private static $app;
 
     public function __construct () {
-    	self::$app = App::instance();
+    	$app = App::instance();
 
-    	$this->view = self::$app->view;
+    	$this->view = $app->view;
 
-    	$this->flash = self::$app->flash;
+    	$this->flash = $app->flash;
     }
 
 }

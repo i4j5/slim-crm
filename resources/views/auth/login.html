@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %} 
+<div class="container">
+  
+  <form class="col s12" method="post">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" name="password" type="text">
+        <label for="password">Введите пароль</label>
+      </div>
+    </div>
+
+    <div class="row center">
+      <div class="input-field col s12">
+        <button type="submit" class="waves-effect waves-light btn">Войти</button> 
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+{% endblock %}
+
+{% block nav %}{% endblock %}
