@@ -21,11 +21,35 @@ class Settings extends \AbstractController{
           $request->getParsedBody(),
           [
             'email',
-            'pagination'
+            'pagination',
+            'password',
+            'passwordConfirm'
           ], ''
         );
 
-        echo $data['pagination'];
+        $errors = [];
+
+        if ($data['password']) {
+
+          if ($data['password'] === $data['passwordConfirm']) {
+
+            $hash = password_hash($data['password'],  CRYPT_BLOWFISH,  ['cost' => 11]);
+
+            $password_hash = Model::factory('Models\Settings')
+                              ->where('key', 'password_hash')
+                              ->find_one();
+
+            $password_hash->value = $hash;
+
+            $password_hash->save();
+
+          } else {
+            $errors[] = 'Пароли не совпадают!';
+          }
+
+        }
+
+
 
         $pagination = Model::factory('Models\Settings')->where('key', 'pagination')->find_one();
         $pagination->value = $data['pagination'];
@@ -39,7 +63,8 @@ class Settings extends \AbstractController{
 
       return $this->view->render($response, 'settings/index.html', 
 	    	[
-	    		'data' => $data
+	    		'data' => $data,
+          'errors' => $errors
 	    	]
 	    );
 

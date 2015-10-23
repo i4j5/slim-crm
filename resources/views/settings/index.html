@@ -21,22 +21,15 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="newPassword" name="newPassword" type="text" value="{{ data.newPassword }}">
-          <label for="newPassword">Новый пароль</label>
+          <input id="password" name="password" type="text" value="">
+          <label for="password">Новый пароль</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="newPasswordConfirm" name="newPasswordConfirm" type="text" value="{{ data.newPasswordConfirm }}">
-          <label for="newPasswordConfirm">Новый пароль ещё раз</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" name="password" type="text" value="{{ data.password }}">
-          <label for="password">Текущий пароль</label>
+          <input id="passwordConfirm" name="passwordConfirm" type="text" value="">
+          <label for="passwordConfirm">Новый пароль ещё раз</label>
         </div>
       </div>
 
@@ -49,5 +42,10 @@
     </form>
 
   </div>
+  {% for error in errors %}
+  <script>
+    Materialize.toast('{{ error }}', 5000);
+  </script>
+  {% endfor %}
 
 {% endblock %}
