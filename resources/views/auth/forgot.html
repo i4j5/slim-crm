@@ -6,26 +6,17 @@
   <form class="center" method="post">
     <div class="row">
       <div class="input-field col s12 offset-m4 m4">
-        <input id="password" name="password" type="password">
-        <label for="password">Введите пароль</label>
+        <input id="email" name="email" type="text" value="{{ data.email }}">
+        <label for="email">Введите E-mail</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <button type="submit" class="waves-effect waves-light btn">Войти</button> 
+        <button type="submit" class="waves-effect waves-light btn">Востановить пароль</button>
       </div>
     </div>
-    <div class="row">
-      <div class="col s12 card-action">
-        <a href="/forgot">Забыли пароль?</a> 
-      </div>
-    </div>
-
-
   </form>
-
-
 </div>
 
 {% for error in errors %}

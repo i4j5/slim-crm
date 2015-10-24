@@ -38,6 +38,7 @@ $app->post('/api/orders/create', function ($request, $response) {
 
 
 $app->map(['GET', 'POST'], '/login', 'Http\Controllers\Auth:login');
+$app->map(['GET', 'POST'], '/forgot', 'Http\Controllers\Auth:forgot');
 $app->get('/logout', 'Http\Controllers\Auth:logout');
 
 $app->group('/', function () {
