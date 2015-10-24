@@ -11,6 +11,32 @@ ORM::configure('sqlite:' . DOCROOT . 'database/crm.db');
 
 $app = App::instance();
 
+$app->post('/api/orders/create', function ($request, $response) {
+	$data = \Ohanzee\Helper\Arr::extract(
+	  $request->getParsedBody(),
+	  [
+	    'name',
+	    'phone',
+	    'email',
+	    'title',
+	    'status_id'
+	  ], ''
+	);
+
+	if ($data['status_id'] === '') {
+		$data['status_id'] = 0;
+	}
+
+  $dt = Carbon\Carbon::now();
+  $data['date'] = $dt->timestamp;
+
+  $order = Model::factory('Models\Order')->create($data);
+	$order->save();
+
+	return $response->withStatus(200);
+});
+
+
 $app->map(['GET', 'POST'], '/login', 'Http\Controllers\Auth:login');
 $app->get('/logout', 'Http\Controllers\Auth:logout');
 
