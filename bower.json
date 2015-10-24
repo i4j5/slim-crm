@@ -5,13 +5,10 @@
   "authors": [
     "Aleksandr Sazhin <i4j5@ya.ru>"
   ],
-  "main": "public/index.php",
   "license": "MIT",
-  "devDependencies": {
-    "Materialize": "materialize#~0.97.1",
-    "jquery": "~2.1.4"
-  },
   "dependencies": {
+    "Materialize": "materialize#~0.97.1",
+    "jquery": "~2.1.4",
     "moment": "~2.10.6"
   }
 }
