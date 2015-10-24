@@ -12,7 +12,13 @@ class Auth extends \AbstractController{
     		}
     	}
 
-      return $this->view->render($response, 'auth/login.html');
+      $errors = [];
+      
+      if ($request->isPost()) {
+        $errors[] = 'Неправильный пароль!';
+      }
+
+      return $this->view->render($response, 'auth/login.html', ['errors' => $errors]);
 
     }
 

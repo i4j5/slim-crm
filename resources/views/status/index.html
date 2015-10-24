@@ -1,44 +1,45 @@
 {% extends "layout.html" %}
 
 {% block content %} 
- 
-<table class="responsive-table bordered centered">
-  <thead>
-    <tr>
-        <th >Статус</th>
-        <th >Описание</th>
-        <th>Действия</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {% for item in data %}
+<div class="row">
+  <table class="responsive-table bordered centered">
+    <thead>
       <tr>
-        <td>
-          {% if item.title %}
-            {{ item.title }}
-          {% else %}
-            -
-          {% endif %}
-        </td>
-        <td>
-          {% if item.description %}
-            {{ item.description }}
-          {% else %}
-            -
-          {% endif %}
-        </td>
-        <td>
-        	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red waves-effect"><i class="material-icons">clear</i></a>
-          &nbsp;
-  	      <a href="/settings/status/edit/{{ item.id }}" class="btn-floating lue-grey waves-effect"><i class="material-icons">create</i></a>
-        </td>
+          <th >Статус</th>
+          <th >Описание</th>
+          <th>Действия</th>
       </tr>
-    {% endfor %}
-  </tbody>
-</table>
+    </thead>
 
-<div class="center">
+    <tbody>
+      {% for item in data %}
+        <tr>
+          <td>
+            {% if item.title %}
+              {{ item.title }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>
+            {% if item.description %}
+              {{ item.description }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>
+          	<a href="/settings/status/delete/{{ item.id }}" class="btn-floating red waves-effect"><i class="material-icons">clear</i></a>
+            &nbsp;
+    	      <a href="/settings/status/edit/{{ item.id }}" class="btn-floating lue-grey waves-effect"><i class="material-icons">create</i></a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="row center">
   <br>
   <a href="/settings/status/create" class="waves-effect waves-light btn">Добавить</a>
 </div>
