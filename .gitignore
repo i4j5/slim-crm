@@ -1,10 +1,10 @@
 /vendor
 /node_modules
 /bower_components
-/public/libs
 /public/*.css
 /public/*.js
 /resources/cache
 /tmp
+/bower
 composer.lock
 npm-debug.log

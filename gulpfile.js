@@ -62,9 +62,9 @@ gulp.task('js', function() {
 
 	return gulp
 		.src([
-			'vendor/jquery/dist/jquery.js',
-			'vendor/Materialize/dist/js/materialize.js',
-			'vendor/moment/min/moment-with-locales.min.js',
+			'bower/jquery/dist/jquery.js',
+			'bower/Materialize/dist/js/materialize.js',
+			'bower/moment/min/moment-with-locales.min.js',
 			'tmp/_.js'
 		])
 		.pipe(concat('_.js'))
