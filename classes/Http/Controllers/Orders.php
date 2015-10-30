@@ -94,6 +94,7 @@ class Orders extends \AbstractController{
           'phone',
           'email',
           'title',
+          'comment',
           'status_id'
         ], ''
       );
@@ -163,6 +164,7 @@ class Orders extends \AbstractController{
 	          'phone',
 	          'email',
 	          'title',
+            'comment',
 	          'status_id'
 	        ], ''
 	      );
