@@ -74,8 +74,8 @@ gulp.task('js', function() {
 });
 
 gulp.task('watch', function(){
-  gulp.watch('front-end/coffee/*.coffee', ['coffee' , 'js']);
-  gulp.watch('front-end/stylus/*.styl', ['stylus']);
+  gulp.watch('coffee/*.coffee', ['coffee' , 'js']);
+  gulp.watch('stylus/*.styl', ['stylus']);
 });
 
 gulp.task('default', ['coffee', 'stylus', 'js', 'watch']);
