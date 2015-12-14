@@ -4,11 +4,11 @@ abstract class AbstractController {
 
 
     public function __construct () {
-    	$app = App::instance();
+    	$container = \App::instance()->getContainer();
 
-    	$this->view = $app->view;
+    	$this->view = $container->view;
 
-    	$this->flash = $app->flash;
+    	$this->flash = $container->flash;
     }
 
 }
